@@ -9,8 +9,8 @@ public class CreateContatoDtoValidator : AbstractValidator<CreateContatoDto>
     {
         RuleFor(x => x.Nome)
             .NotEmpty().WithMessage("O nome é obrigatório.")
-            .Length(3, 100).WithMessage("O nome deve ter entre 3 e 100 caracteres.")
-            .NotEqual("Maria Fora").WithMessage("O nome 'Maria Fora' não é permitido.");
+            .Length(3, 100).WithMessage("O nome deve ter entre 3 e 100 caracteres.");
+           // .NotEqual("Maria Fora").WithMessage("O nome 'Maria Fora' não é permitido.");
 
         RuleFor(x => x.DataNascimento)
             .NotEmpty().WithMessage("A data de nascimento é obrigatória.")
