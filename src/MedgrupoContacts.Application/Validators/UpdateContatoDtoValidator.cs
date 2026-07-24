@@ -1,0 +1,21 @@
+using FluentValidation;
+using MedgrupoContacts.Application.DTOs;
+
+namespace MedgrupoContacts.Application.Validators;
+
+public class UpdateContatoDtoValidator : AbstractValidator<UpdateContatoDto>
+{
+    public UpdateContatoDtoValidator()
+    {
+        RuleFor(x => x.Nome)
+            .NotEmpty().WithMessage("O nome é obrigatório.")
+            .Length(3, 100).WithMessage("O nome deve ter entre 3 e 100 caracteres.");
+
+        RuleFor(x => x.DataNascimento)
+            .NotEmpty().WithMessage("A data de nascimento é obrigatória.")
+            .LessThanOrEqualTo(DateTime.Today).WithMessage("A data de nascimento não poderá ser maior que a data de hoje.");
+
+        RuleFor(x => x.Sexo)
+            .IsInEnum().WithMessage("Sexo informado é inválido.");
+    }
+}
